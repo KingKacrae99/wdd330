@@ -37,3 +37,4 @@ function emptyCartTemplate() {
 }
 
 renderCartContents();
+
