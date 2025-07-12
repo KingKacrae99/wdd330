@@ -131,6 +131,20 @@ button {
   fill: gray;
 }
 
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  row-gap: 3rem;
+}
+.cart-card__empty {
+  text-align: center;
+  font-size: var(--large-font);
+  color: var(--dark-grey);
+}
+
 /* End cart icon styles */
 
 .mission {
