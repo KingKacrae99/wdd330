@@ -1,15 +1,30 @@
+import renderListWithTemplate from "./utils.mjs";
+
 export default class ProductList {
   constructor(category, dataSource, listElement) {
     this.category = category;
     this.dataSource = dataSource;
     this.listElement = listElement;
-    //this.init = this.init.bind(this);
-
   }
 
   async init() {
-    this.products = await this.dataSource.getData();
+    const list = await this.dataSource.getData();
     console.log(this.products);
-    //this.renderProducts();
+    this.renderList(list); // corregido aquí
   }
+
+  renderList(list) {
+    renderListWithTemplate(productCardTemplate, this.listElement, list);
+  }
+}
+
+function productCardTemplate(product) {
+  return `<li class="product-card">
+    <a href="product_pages/?product=${product.ID}">
+      <img src="${product.Image}" alt="${product.Name}">
+      <h2 class="card__brand">${product.Brand.Name}</h2>
+      <h3 class="card__name">${product.Name}</h3>
+      <p class="product-card__price">$${product.FinalPrice}</p>
+    </a>
+  </li>`;
 }
