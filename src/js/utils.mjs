@@ -40,3 +40,14 @@ export function renderListwithTemplate(templateFn, parentElement, list, position
   }
   parentElement.insertAdjacentHTML('afterbegin', htmlStrings.join(""));
 }
+export function notifier(cartItem) {
+  const counter = document.getElementById("counter");
+  if (cartItem) {
+    counter.textContent = cartItem.length;
+  } else {
+    counter.textContent = 0;
+  }
+}
+export function toTwoDecimal(num) {
+  return num.toFixed(2);
+}

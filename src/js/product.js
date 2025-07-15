@@ -1,13 +1,16 @@
-import { getLocalStorage, getParam} from "./utils.mjs";
+import { getLocalStorage, getParam, notifier} from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import productDetails from "./productDetails.mjs";
 
 
-const productId = getParam('product');
+const productId = getParam('products');
 const dataSource = new ProductData('tents');
+console.log(dataSource)
+console.log(productId)
 
 const product = new productDetails(productId, dataSource);
 product.init();
+notifier(getLocalStorage("so-cart"));
 
 console.log(dataSource.findProductById(productId))
 
