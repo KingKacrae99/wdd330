@@ -1,7 +1,7 @@
 import { setLocalStorage, getLocalStorage} from "./utils.mjs";
 
 
-
+// Class that handles the rendering of a product instance
 export default class ProductDetails {
     constructor(productId, dataSource){
     this.productId = productId;
@@ -9,23 +9,29 @@ export default class ProductDetails {
     this.dataSource = dataSource;
     }
 
-
+    // initializes product and render its detials
     async init() {
+        // retreives product for the dataSource
         this.product = await this.dataSource.findProductById(this.productId);
 
+        // render the product details
         this.renderProductDetails();
 
-    document
-        .getElementById("addToCart")
-        .addEventListener("click", () => this.addProductToCart.bind(this));
+    
+       document.getElementById("addToCart").addEventListener("click", () => this.addProductToCart.bind(this));
     }
 
+    // add the product to cart stored in localstorage
     addProductToCart() {
         const cartItems = getLocalStorage("so-cart") || [];
         cartItems.push(this.product);
         setLocalStorage("so-cart", cartItems);
     }
 
+    /** 
+     * renders the product details by:
+     * calling the productDetailsTemplate that generates the HtML layout
+    **/
     renderProductDetails() {
        productDetailsTemplate(this.product);
     }
@@ -33,6 +39,7 @@ export default class ProductDetails {
 
 }
 
+// generates the product details and set them into Dom
 function productDetailsTemplate(product) {
   document.querySelector('h2').textContent = product.Brand.Name;
   document.querySelector('h3').textContent = product.NameWithoutBrand;
