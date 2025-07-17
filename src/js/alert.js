@@ -13,10 +13,10 @@ export default class Alert {
   async getAlerts() {
     try {
       const response = await fetch(this.jsonPath);
-      if (!response.ok) throw new Error("No se pudo cargar alerts.json");
+      if (!response.ok) throw new Error("there was an erro getting the aletrs");
       return await response.json();
     } catch (error) {
-      console.log("Error al obtener las alertas:", error);
+      console.log("there was an erro getting the aletrs", error);
       return [];
     }
   }
