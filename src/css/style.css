@@ -122,7 +122,10 @@ button {
   position: relative;
   text-align: center;
 }
-
+.cart-card {
+  width: 100%;
+  gap: 2rem;
+}
 .cart svg {
   width: 25px;
 }
@@ -175,6 +178,7 @@ button {
   flex-flow: row wrap;
   list-style-type: none;
   justify-content: center;
+  width: 100%;
 }
 
 .product-list a {
@@ -274,6 +278,22 @@ button {
   position: absolute;
   top: 5px;
   right: 5px
+}
+.cart-container {
+  padding: 1em;
+}
+.cart-total {
+  text-align: center;
+  margin: 1em auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 3.5rem;
+}
+.cart-total__text {
+  font-size: 1.2em;
+  margin-right: 1em;
+  font-weight: bold;
 }
 
 @media screen and (min-width: 500px) {

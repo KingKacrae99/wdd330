@@ -1,4 +1,5 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, qs } from "./utils.mjs";
+const totalAmount = qs(".cart-total__amount");
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -38,3 +39,12 @@ function emptyCartTemplate() {
 
 renderCartContents();
 
+function updateTotal() {
+  const cartItems = getLocalStorage("so-cart");
+
+  const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+
+  totalAmount.textContent = `$${total.toFixed(2)}`;
+}
+
+updateTotal();
