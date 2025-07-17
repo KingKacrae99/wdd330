@@ -11,6 +11,11 @@ product.init();
 
 console.log(dataSource.findProductById(productId))
 
+const addToCart = document.getElementById("addToCart");
+addToCart.addEventListener("click", () => {
+  product.addProductToCart();
+});
+
 //function addProductToCart(product) {
   //let cart = getLocalStorage("so-cart");
   //if (!//Array.isArray(cart)) {

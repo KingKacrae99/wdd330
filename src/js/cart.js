@@ -29,7 +29,7 @@ function cartItemTemplate(item) {
 function emptyCartTemplate() {
   return `<div class="empty-cart">
     <h2 class="cart-card__empty">Your cart is empty</h2>
-  <a href="product_pages/index.html">
+  <a href="/index.html">
     <button>Shop Now</button>
   </a>
   </div>
