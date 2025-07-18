@@ -3,12 +3,17 @@ import ProductData from "./ProductData.mjs";
 import productDetails from "./productDetails.mjs";
 
 
-const productId = getParam('products');
+const productId = getParam('product');
 const dataSource = new ProductData('tents');
 
 const product = new productDetails(productId, dataSource);
 product.init();
 notifier(getLocalStorage("so-cart"));
+
+const addToCart = document.getElementById("addToCart");
+addToCart.addEventListener('click', () => {
+  product.addProductToCart();
+})
 
 console.log(dataSource.findProductById(productId))
 

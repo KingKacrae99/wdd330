@@ -7,7 +7,7 @@ function productCardTemplate(product) {
     let deductedPrice = product.SuggestedRetailPrice - product.FinalPrice;
     let discount = toTwoDecimal((deductedPrice / product.SuggestedRetailPrice) * 100);
     return ` <li class="product-card">
-      <a href="product_pages/?products=${product.Id}">
+      <a href="product_pages/?product=${product.Id}">
         <img src="${product.Image}" alt="${product.Name}">
         <h2 class="card_brand">${product.Brand.Name}</h2>
         <h3 class="card__name">${product.Name}</h3>
@@ -21,9 +21,13 @@ function productCardTemplate(product) {
 }
 function removeProductFromCart(product_id) {
     let soCart = getLocalStorage("so-cart") || [];
+    console.log(soCart);
+
     if (soCart) {
-        soCart = soCart.filter(product => product.id === product_id);
+        console.log(`This is diff: '${product_id}'`)
+        soCart = soCart.filter(product => product.Id != `"${product_id}"`);
         setLocalStorage("so-cart", soCart);
+        console.log(soCart);
     }
 }
 //  Class that handles the product cards render based on category
@@ -52,8 +56,12 @@ export default class ProductList{
         list.forEach(product => {
             const productBtn = document.getElementById(`remove-${product.Id}`);
             if (productBtn) {
-                productBtn.addEventListener('click', () => {
-                    removeProductFromCart(product.Id);
+                productBtn.addEventListener('click', (e) => {
+                    const completeId= e.target.id;
+                    const productId = completeId.split('-')[1];
+
+                    console.log(productId)
+                    removeProductFromCart(productId);
                     productBtn.closest(".product-card").remove();
                 });
             }
