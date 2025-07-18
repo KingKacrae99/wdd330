@@ -1,5 +1,6 @@
 import { getLocalStorage, qs } from "./utils.mjs";
 const totalAmount = qs(".cart-total__amount");
+import { loadHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -7,6 +8,8 @@ function renderCartContents() {
 
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
+
+loadHeaderFooter();
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
