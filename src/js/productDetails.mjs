@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage} from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, toTwoDecimal} from "./utils.mjs";
 
 
 
@@ -33,17 +33,24 @@ export default class ProductDetails {
 
 }
 
+// generates the product details and set them into Dom
 function productDetailsTemplate(product) {
+  let deductedPrice = toTwoDecimal(product.SuggestedRetailPrice - product.FinalPrice);
+    let discount = toTwoDecimal((deductedPrice / product.SuggestedRetailPrice) * 100);
+    console.log(discount)
   document.querySelector("h2").textContent = product.Brand.Name;
   document.querySelector("h3").textContent = product.NameWithoutBrand;
-
-  const productImage = document.getElementById("productImage");
+ 
+    const productImage = document.getElementById("productImage");
+    console.log(product.Image)
   productImage.src = product.Image;
   productImage.alt = product.NameWithoutBrand;
-
+ 
   document.getElementById("productPrice").textContent = product.FinalPrice;
+    document.getElementById("product-discount-fee").innerHTML = `<strong>Discounted Fee:</strong> $${deductedPrice}`;
+  document.getElementById("product_discount").innerHTML = `<strong>Discount:</strong> ${discount}% Off`;    
   document.getElementById("productColor").textContent = product.Colors[0].ColorName;
   document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
-
+ 
   document.getElementById("addToCart").dataset.id = product.Id;
 }

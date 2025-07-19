@@ -1,4 +1,4 @@
-import { getLocalStorage, qs } from "./utils.mjs";
+import { getLocalStorage, qs, notifier } from "./utils.mjs";
 const totalAmount = qs(".cart-total__amount");
 
 function renderCartContents() {
@@ -6,7 +6,9 @@ function renderCartContents() {
   const htmlItems = cartItems ? cartItems.map((item) => cartItemTemplate(item)) : [emptyCartTemplate()];
 
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  notifier(cartItems);
 }
+
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">

@@ -1,4 +1,5 @@
 import renderListWithTemplate from "./utils.mjs";
+import { toTwoDecimal } from "./utils.mjs";
 
 export default class ProductList {
   constructor(category, dataSource, listElement) {
@@ -19,14 +20,10 @@ export default class ProductList {
 }
 
 function productCardTemplate(product) {
-  const isOnSale = product.FinalPrice < product.ListPrice;
-  const discount = isOnSale
-    ? Math.round(
-        ((product.SuggestedRetailPrice - product.FinalPrice) /
-          product.SuggestedRetailPrice) *
-          100
-      )
-    : 0;
+    let deductedPrice = product.SuggestedRetailPrice - product.FinalPrice;
+    let discount = toTwoDecimal((deductedPrice / product.SuggestedRetailPrice) * 100);
+
+    const isOnSale = product.SuggestedRetailPrice > product.FinalPrice;
 
   return `<li class="product-card">
     <a href="product_pages/?product=${product.Id}">
@@ -44,3 +41,22 @@ function productCardTemplate(product) {
     </a>
   </li>`;
 }
+
+/*
+function productCardTemplate(product) {
+    let deductedPrice = product.SuggestedRetailPrice - product.FinalPrice;
+    let discount = toTwoDecimal((deductedPrice / product.SuggestedRetailPrice) * 100);
+    return ` <li class="product-card">
+      <a href="product_pages/?product=${product.Id}">
+        <img src="${product.Image}" alt="${product.Name}">
+        <h2 class="card_brand">${product.Brand.Name}</h2>
+        <h3 class="card__name">${product.Name}</h3>
+        <p class="product-card__price">${product.FinalPrice}</p>
+        <p class="product-card_discount"><strong>Discount:</strong></p>
+        <p class="product-reduced_fee"><strong>Discounted Fee:</strong> ${toTwoDecimal(deductedPrice)}</p>
+      </a>
+      <button id="remove-${product.Id}">Remove From Cart </button>
+     </li>
+    `;
+}
+*/
