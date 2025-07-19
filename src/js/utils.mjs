@@ -32,3 +32,25 @@ export function getParam(param){
   if (product) return  product;
   return null;
 }
+
+export default function renderListWithTemplate (template, parentElement, list, position = "afterbegin", clear = false) {
+   const htmlStrings = list.map(template);
+
+   if (clear) {
+      parentElement.innerHTML = "";
+   }
+    parentElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
+}
+
+export function notifier(cartItem) {
+  const counter = document.getElementById("counter");
+  if (cartItem) {
+    counter.textContent = cartItem.length;
+  } else {
+    counter.textContent = 0;
+  }
+}
+
+export function toTwoDecimal(num) {
+  return num.toFixed(2);
+}

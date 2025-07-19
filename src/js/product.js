@@ -1,15 +1,21 @@
-import { getLocalStorage, getParam} from "./utils.mjs";
+import { getLocalStorage, getParam, notifier} from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import productDetails from "./productDetails.mjs";
 
 
-const productId = getParam('product');
-const dataSource = new ProductData('tents');
+
+const productId = getParam("product");
+const dataSource = new ProductData("tents");
 
 const product = new productDetails(productId, dataSource);
 product.init();
-
+notifier(getLocalStorage("so-cart"));
 console.log(dataSource.findProductById(productId))
+
+const addToCart = document.getElementById("addToCart");
+addToCart.addEventListener("click", () => {
+  product.addProductToCart();
+});
 
 //function addProductToCart(product) {
   //let cart = getLocalStorage("so-cart");
@@ -30,3 +36,5 @@ console.log(dataSource.findProductById(productId))
 /*document*/
   /*.getElementById("addToCart")
   .addEventListener("click", addToCartHandler);*/
+
+  
