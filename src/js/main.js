@@ -7,9 +7,8 @@ const dataSource = new ProductData("tents");
 
 const element = qs(".product-list");
 
-const productList = new ProductList("Tents", dataSource, element);
+//const productList = new ProductList("Tents", dataSource, element);
 
-productList.init();
 
 notifier(getLocalStorage("so-cart"));
 
