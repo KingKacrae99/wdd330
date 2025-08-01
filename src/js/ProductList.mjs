@@ -1,5 +1,6 @@
 import renderListWithTemplate from "./utils.mjs";
 import { toTwoDecimal } from "./utils.mjs";
+import  updateBreadcrumb  from "./utils.mjs";
 
 export default class ProductList {
   constructor(category, dataSource, listElement) {
@@ -15,6 +16,7 @@ export default class ProductList {
   }
 
   renderList(list) {
+     //updateBreadcrumb("productList", { category: this.category, products: list });
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
 }
@@ -24,6 +26,7 @@ function productCardTemplate(product) {
     let discount = toTwoDecimal((deductedPrice / product.SuggestedRetailPrice) * 100);
 
     const isOnSale = product.SuggestedRetailPrice > product.FinalPrice;
+    
 
   return `<li class="product-card">
     <a href="product_pages/?product=${product.Id}">
