@@ -9,16 +9,17 @@ export default class ProductList {
   }
 
   async init() {
-    const list = await this.dataSource.getData();
+    const list = await this.dataSource.getData(this.category);
     console.log(list);
     this.renderList(list); 
+    const categoryHead = document.getElementById("category-head");
+    categoryHead.textContent =`Top Products: ${this.category}`
   }
 
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
 }
-
 function productCardTemplate(product) {
     let deductedPrice = product.SuggestedRetailPrice - product.FinalPrice;
     let discount = toTwoDecimal((deductedPrice / product.SuggestedRetailPrice) * 100);
@@ -26,8 +27,8 @@ function productCardTemplate(product) {
     const isOnSale = product.SuggestedRetailPrice > product.FinalPrice;
 
   return `<li class="product-card">
-    <a href="product_pages/?product=${product.Id}">
-      <img src="${product.Image}" alt="${product.Name}">
+    <a href="/product_pages/?product=${product.Id}">
+      <img src="${product.Images.PrimaryMedium}" alt="${product.Name}">
       <h2 class="card__brand">${product.Brand.Name}</h2>
       <h3 class="card__name">${product.Name}</h3>
       <p class="product-card__price">  $${product.FinalPrice}
