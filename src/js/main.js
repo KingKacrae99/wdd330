@@ -1,9 +1,9 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./externalSrevices.mjs";
 import ProductList from "./ProductList.mjs";
 import { qs, notifier, getLocalStorage } from "./utils.mjs";
 import Alert from "./alert.js";
 
-const dataSource = new ProductData("tents");
+const dataSource = new ExternalServices("tents");
 
 const element = qs(".product-list");
 

@@ -1,9 +1,9 @@
 import { getLocalStorage, getParam, notifier } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./externalSrevices.mjs";
 import productDetails from "./productDetails.mjs";
 
 const productId = getParam("product");
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 
 const product = new productDetails(productId, dataSource);
 product.init();

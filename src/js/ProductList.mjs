@@ -13,7 +13,7 @@ export default class ProductList {
     console.log(list);
     this.renderList(list); 
     const categoryHead = document.getElementById("category-head");
-    categoryHead.textContent =`Top Products: ${this.category}`
+    categoryHead.textContent = `Top Products: ${this.category}`
   }
 
   renderList(list) {

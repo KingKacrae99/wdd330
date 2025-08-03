@@ -16,7 +16,7 @@
       <div class="logo">
         <img src="images/noun_Tent_2517.svg" alt="tent image for logo" />
 
-        <a href="index.html">
+        <a href="../index.html">
           Sleep
           <span class="highlight">Outside</span>
         </a>
@@ -60,47 +60,63 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
-       <form id="checkout-form">
-      <fieldset>
-        <legend>Customer Information</legend>
-        <label for="first-name">First Name</label>
-        <input type="text" id="first-name" name="first-name" required />
+      <form id="checkout-form">
+        <fieldset>
+          <legend>Customer Information</legend>
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" name="first-name" required />
 
-        <label for="last-name">Last Name</label>
-        <input type="text" id="last-name" name="last-name" required />
-      </fieldset>
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="last-name" required />
+        </fieldset>
 
-      <fieldset>
-        <legend>Address</legend>
-        <label for="street">Street Address</label>
-        <input type="text" id="street" name="street" required />
+        <fieldset>
+          <legend>Address</legend>
+          <label for="street">Street Address</label>
+          <input type="text" id="street" name="street" required />
 
-        <label for="city">City</label>
-        <input type="text" id="city" name="city" required />
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" required />
 
-        <label for="state">State</label>
-        <input type="text" id="state" name="state" required />
+          <label for="state">State</label>
+          <input type="text" id="state" name="state" required />
 
-        <label for="zip">Zip Code</label>
-        <input type="text" id="zip" name="zip" required />
-      </fieldset>
+          <label for="zip">Zip Code</label>
+          <input type="text" id="zip" name="zip" required />
+        </fieldset>
 
-      <fieldset>
-        <legend>Payment Information</legend>
-        <label for="card-number">Credit Card Number</label>
-        <input type="text" id="card-number" name="card-number" required />
+        <fieldset>
+          <legend>Payment Information</legend>
+          <label for="card-number">Credit Card Number</label>
+          <input type="text" id="card-number" name="card-number" required />
 
-        <label for="expiration">Expiration Date</label>
-        <input type="text" id="expiration" name="expiration" placeholder="MM/YY" required />
+          <label for="expiration">Expiration Date</label>
+          <input
+            type="text"
+            id="expiration"
+            name="expiration"
+            placeholder="MM/YY"
+            required
+          />
 
-        <label for="security-code">Security Code</label>
-        <input type="text" id="security-code" name="security-code" required />
-      </fieldset>
+          <label for="security-code">Security Code</label>
+          <input type="text" id="security-code" name="security-code" required />
+        </fieldset>
 
-      <button type="submit">Complete Purchase</button>
-    </form>
+        <button type="submit">Complete Purchase</button>
+      </form>
+
+      <div class="order-summary">
+        <p>Subtotal: $<span id="subtotal">0</span></p>
+        <p>Tax (6%): $<span id="tax">0</span></p>
+        <p>Shipping: $<span id="shipping">0</span></p>
+        <p>
+          <strong>Total: $<span id="total">0</span></strong>
+        </p>
+      </div>
     </main>
 
     <footer>&copy;NOT a real business</footer>
+    <script type="module" src="../js/checkout.js"></script>
   </body>
 </html>
