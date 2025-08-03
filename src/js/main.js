@@ -9,8 +9,7 @@ const element = qs(".product-list");
 
 //const productList = new ProductList("Tents", dataSource, element);
 
-
 notifier(getLocalStorage("so-cart"));
 
 const alerts = new Alert("../public/json/alerts.json");
-    //alerts.init();
+//alerts.init();

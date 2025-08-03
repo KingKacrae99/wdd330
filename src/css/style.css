@@ -117,35 +117,34 @@ button {
 /* End utility classes */
 
 /*****Category Page******/
-.category{
+.category {
   margin: 2rem 0;
   padding: 1rem;
-  & .product-category{
+  & .product-category {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     list-style: none;
     margin: 1rem 0;
-  & .category-item{
-    border: 1px solid #ccc;
-    margin:0 1rem;
-    border-radius: 5px;
-    padding: 1rem;
-    text-align: center;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    & a{
-      text-decoration: none;
-      color: #333;
+    & .category-item {
+      border: 1px solid #ccc;
+      margin: 0 1rem;
+      border-radius: 5px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+      & a {
+        text-decoration: none;
+        color: #333;
+      }
+      & h3 {
+        margin: 1rem 0;
+      }
     }
-    & h3{
-      margin:1rem 0;
-    }
-   }
-
   }
 }
-.category-item:hover{
+.category-item:hover {
   transform: scale(1.05);
   color: #555;
 }
@@ -312,7 +311,7 @@ button {
   display: inline-block;
   position: absolute;
   top: 5px;
-  right: 5px
+  right: 5px;
 }
 .cart-container {
   padding: 1em;
@@ -331,16 +330,15 @@ button {
   font-weight: bold;
 }
 
-.cart a #counter{
+.cart a #counter {
   background-color: var(--primary-color);
   border-radius: 50%;
-  padding: .3rem;
+  padding: 0.3rem;
   position: absolute;
   top: 2px;
   left: auto;
   right: 3px;
-  font-size: .7rem;
- 
+  font-size: 0.7rem;
 }
 
 @media screen and (min-width: 500px) {
@@ -357,11 +355,11 @@ button {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
-  .category{
-    .product-category{
+  .category {
+    .product-category {
       flex-direction: row;
-      & .category-item{
-        margin:0;
+      & .category-item {
+        margin: 0;
       }
     }
   }

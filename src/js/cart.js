@@ -3,12 +3,13 @@ const totalAmount = qs(".cart-total__amount");
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems ? cartItems.map((item) => cartItemTemplate(item)) : [emptyCartTemplate()];
+  const htmlItems = cartItems
+    ? cartItems.map((item) => cartItemTemplate(item))
+    : [emptyCartTemplate()];
 
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   notifier(cartItems);
 }
-
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
