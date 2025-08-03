@@ -14,7 +14,7 @@
   <body>
     <header class="divider">
       <div class="logo">
-        <img src="images/noun_Tent_2517.svg" alt="tent image for logo" />
+        <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
 
         <a href="../index.html">
           Sleep
@@ -102,9 +102,29 @@
           <label for="security-code">Security Code</label>
           <input type="text" id="security-code" name="security-code" required />
         </fieldset>
-
-
-        <button type="submit">Complete Purchase</button>
+        <fieldset>
+          <div>
+            <p id="subtotal">
+              <strong>Subtotal : </strong>
+            </p>
+          </div>
+          <div>
+            <p id="tax">
+              <strong>Tax : </strong>
+            </p>
+          </div>
+          <div>
+            <p id="Shipping-Estimate">
+              <strong>Shipping Estimate: </strong>
+            </p>
+          </div>
+          <div>
+            <p id="Order Total">
+              <strong>Order Total : </strong>
+            </p>
+          </div>
+        </fieldset>
+        <button type="submit">Place Order</button>
       </form>
 
       <div class="order-summary">
