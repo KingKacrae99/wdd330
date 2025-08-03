@@ -22,19 +22,24 @@ export default class ProductDetails {
     }
 
     addProductToCart() {
-    const cartItems = getLocalStorage("so-cart") || [];
-    const existingItem = cartItems.find((item) => item.Id === this.product.Id);
+  const cartItems = getLocalStorage("so-cart") || [];
 
-    if (existingItem) {
-      existingItem.quantity = (existingItem.quantity || 1) + 1;
-    } else {
-      this.product.quantity = 1;
-      cartItems.push(this.product);
-    }
+  const existingItemIndex = cartItems.findIndex(
+    (item) => item.Id === this.product.Id
+  );
 
-    setLocalStorage("so-cart", cartItems);
+  if (existingItemIndex !== -1) {
+    
+    cartItems[existingItemIndex].quantity =
+      (cartItems[existingItemIndex].quantity || 1) + 1;
+  } else {
+    
+    const productToAdd = { ...this.product, quantity: 1 };
+    cartItems.push(productToAdd);
   }
 
+  setLocalStorage("so-cart", cartItems);
+}
     renderProductDetails() {
        productDetailsTemplate(this.product);
     }
