@@ -25,7 +25,7 @@ export default class Alert {
     const section = document.createElement("section");
     section.classList.add("alert-list");
 
-    alerts.forEach(alert => {
+    alerts.forEach((alert) => {
       const p = document.createElement("p");
       p.textContent = alert.message;
       p.style.backgroundColor = alert.background || "gray";
