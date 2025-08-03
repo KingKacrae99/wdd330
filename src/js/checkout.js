@@ -10,7 +10,7 @@ document.querySelector("#checkout-form").addEventListener("submit", async (e) =>
     await checkout.checkout(e.target);
     alert("Order successful!");
     localStorage.removeItem("so-cart");
-    window.location.href = "/confirmation.html";
+    window.location.href = "../index.html";
   } catch (err) {
     alert("Order failed. Try again.");
     console.error(err);

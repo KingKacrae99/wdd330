@@ -33,7 +33,7 @@ async getData(category) {
       body: JSON.stringify(order)
     };
 
-    const response = await fetch(`${baseURL}checkout`, options);
+    const response = await fetch(`${baseURL}:3000/checkout`, options);
 
     if (!response.ok) {
       throw new Error("Order failed.");
