@@ -34,6 +34,7 @@ function productCardTemplate(product) {
       <p class="product-card__price">  $${product.FinalPrice}
         ${isOnSale ? `<span class="original-price">$${product.SuggestedRetailPrice}</span>` : ""}
       </p>
+      
       ${
         isOnSale
           ? `<span class="discount-badge">${discount}% OFF</span>`
