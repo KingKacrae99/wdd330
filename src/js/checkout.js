@@ -3,7 +3,7 @@ import CheckoutProcess from "./checkoutProcess.mjs";
 const checkout = new CheckoutProcess("so-cart", ".order-summary");
 checkout.init();
 
-document.querySelector("#checkout-form").addEventListener("submit", async (e) => {
+document.querySelector("#checkout-form").addEventListener("click", async (e) => {
   e.preventDefault();
 
   try {

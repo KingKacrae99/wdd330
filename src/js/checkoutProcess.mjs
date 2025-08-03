@@ -14,6 +14,7 @@ export default class CheckoutProcess {
   }
 
   init() {
+    
     this.calculateSummary();
     this.addZipListener();
   }
