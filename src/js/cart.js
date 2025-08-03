@@ -1,4 +1,4 @@
-import { getLocalStorage, qs, notifier } from "./utils.mjs";
+import { getLocalStorage, qs, notifier, setLocalStorage } from "./utils.mjs";
 const totalAmount = qs(".cart-total__amount");
 
 function renderCartContents() {
@@ -39,14 +39,46 @@ function emptyCartTemplate() {
   `;
 }
 
-renderCartContents();
-
 function updateTotal() {
-  const cartItems = getLocalStorage("so-cart");
-
-  const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
-
+  const cartItems = getLocalStorage("so-cart") || [];
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.FinalPrice * (item.quantity || 1),
+    0
+  );
   totalAmount.textContent = `$${total.toFixed(2)}`;
 }
 
+function attachEventListeners() {
+  document.querySelectorAll(".increase-qty").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.id;
+      updateQuantity(id, 1);
+    })
+  );
+
+  document.querySelectorAll(".decrease-qty").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.id;
+      updateQuantity(id, -1);
+    })
+  );
+}
+
+function updateQuantity(id, change) {
+  let cartItems = getLocalStorage("so-cart") || [];
+
+  cartItems = cartItems.map((item) => {
+    if (item.Id === id) {
+      const newQty = (item.quantity || 1) + change;
+      item.quantity = newQty < 1 ? 1 : newQty;
+    }
+    return item;
+  });
+
+  setLocalStorage("so-cart", cartItems);
+  renderCartContents(); // Re-render the cart
+}
+
+renderCartContents();
 updateTotal();
+attachEventListeners(); 
