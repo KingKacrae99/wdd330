@@ -48,6 +48,7 @@ export default class CheckoutProcess {
   }
 
   async checkout(form) {
+    form = document.forms["checkout-form"]
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
@@ -59,8 +60,11 @@ export default class CheckoutProcess {
       shipping: this.shipping,
       tax: this.tax.toFixed(2)
     };
-
-    const service = new ExternalServices();
-    return await service.checkout(order);
+    try {
+      const service = new ExternalServices();
+      return await service.checkout(order); 
+    } catch (err) {
+      console.log(err)
+    }
   }
 }
