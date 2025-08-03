@@ -1,17 +1,21 @@
-import { getLocalStorage, qs, notifier, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, qs, notifier } from "./utils.mjs";
+
 const totalAmount = qs(".cart-total__amount");
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems ? cartItems.map((item) => cartItemTemplate(item)) : [emptyCartTemplate()];
+  const cartItems = getLocalStorage("so-cart") || [];
+  const htmlItems = cartItems.length
+    ? cartItems.map((item) => cartItemTemplate(item))
+    : [emptyCartTemplate()];
 
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   notifier(cartItems);
+  updateTotal();
+  attachEventListeners(); // Attach event listeners after rendering
 }
 
-
 function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider" data-id="${item.Id}">
+  return `<li class="cart-card divider" data-id="${item.Id}">
     <a href="#" class="cart-card__image">
       <img src="${item.Image}" alt="${item.Name}" />
     </a>
@@ -22,24 +26,21 @@ function cartItemTemplate(item) {
     
     <div class="cart-card__quantity-controls">
       <button class="decrease-qty" data-id="${item.Id}">−</button>
-      <span class="cart-card__quantity">qty: ${item.quantity || 1}</span>
+      <span class="cart-card__quantity"> ${item.quantity || 1}</span>
       <button class="increase-qty" data-id="${item.Id}">+</button>
     </div>
 
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
-
-  return newItem;
 }
 
 function emptyCartTemplate() {
   return `<div class="empty-cart">
     <h2 class="cart-card__empty">Your cart is empty</h2>
-  <a href="/index.html">
-    <button>Shop Now</button>
-  </a>
-  </div>
-  `;
+    <a href="/index.html">
+      <button>Shop Now</button>
+    </a>
+  </div>`;
 }
 
 function updateTotal() {
@@ -83,5 +84,3 @@ function updateQuantity(id, change) {
 }
 
 renderCartContents();
-updateTotal();
-attachEventListeners(); 
