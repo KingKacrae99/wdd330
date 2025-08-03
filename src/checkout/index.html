@@ -59,6 +59,82 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+        <form method="post" action="" id="">
+          <div class="form-group">
+            <label for="first_name">First name</label>
+            <input type="text" id="first_name" name="first_name" title="User first given name" required>
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last name</label>
+            <input type="text" id="last_name" name="last_name" title="User last given name" required>
+          </div>
+          <fieldset>
+            <legend>Address</legend>
+            <div class="form-group">
+              <label for="str_address"> Street Address</label>
+              <input type="text" id="str_address" name="street_address" title="The user street address" required>
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" title="User city of residence" required>
+            </div>
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" id="state" name="state" title="State of residence" required>
+            </div>
+            <div class="form-group">
+              <label for="zip_code">Zip Code</label>
+              <input type="text" id="zip_code" name="zip_code" pattern="\d{5}(-\d{4})?" autocomplete="" required>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Payment</legend>
+            <div class="form-group">
+              <label for="card_number">Card Number</label>
+              <input type="text" id="card_number" 
+              name="card_number" inputmode="numeric" 
+              title="Payment Card Number" required>
+            </div>
+            <div class="form-group">
+              <label for="exp_date">Expiration Date</label>
+              <input type="month" name="exp_date"
+              id="exp_date" title="Card expiration date"
+              min="2024-07"  required>
+            </div>
+            <div class="form-group">
+              <label for="cvv">Security Code</label>
+              <input type="text" id="cvv" 
+                name="cvv" inputmode="numeric"
+                title="" placeholder="CVV"
+                maxlength="4" required>
+            </div>
+          </fieldset>
+          <div class="form-btn">
+            <button type="submit">Place Order</button>
+          </div>
+        </form>
+      </section>
+      <section class="order-sum">
+        <div>
+          <p id="subtotal">
+            <strong>Subtotal : </strong>
+          </p>
+        </div>
+        <div>
+          <p id="tax">
+            <strong>Tax : </strong>
+          </p>
+        </div>
+        <div>
+          <p id="Shipping-Estimate">
+            <strong>Shipping Estimate: </strong>
+          </p>
+        </div>
+        <div>
+          <p id="Order Total">
+            <strong>Order Total : </strong>
+          </p>
+        </div>
       </section>
     </main>
 
