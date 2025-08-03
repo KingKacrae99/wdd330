@@ -1,7 +1,7 @@
 import { setLocalStorage, getLocalStorage, toTwoDecimal} from "./utils.mjs";
 
 
-
+// onstuctor of an instance
 export default class ProductDetails {
     constructor(productId, dataSource){
     this.productId = productId;
@@ -9,9 +9,10 @@ export default class ProductDetails {
     this.dataSource = dataSource;
     }
 
-
+    // i nitializer
     async init() {
-        this.product = await this.dataSource.findProductById(this.productId);
+      this.product = await this.dataSource.findProductById(this.productId);
+      console.log(this.product)
 
         this.renderProductDetails();
 
@@ -43,7 +44,8 @@ function productDetailsTemplate(product) {
  
     const productImage = document.getElementById("productImage");
     console.log(product.Image)
-  productImage.src = product.Image;
+  productImage.src = product.Images.PrimaryLarge
+;
   productImage.alt = product.NameWithoutBrand;
  
   document.getElementById("productPrice").textContent = product.FinalPrice;
