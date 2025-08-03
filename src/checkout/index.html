@@ -59,15 +59,20 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
-        <form method="post" action="" id="">
-          <div class="form-group">
-            <label for="first_name">First name</label>
-            <input type="text" id="first_name" name="first_name" title="User first given name" required>
-          </div>
-          <div class="form-group">
-            <label for="last_name">Last name</label>
-            <input type="text" id="last_name" name="last_name" title="User last given name" required>
-          </div>
+        <form method="post" action="" id="checkout-form">
+          <!-----------============== Customer Infomation ================------------>
+          <fieldset>
+            <legend>Customer Information</legend>
+            <div class="form-group">
+              <label for="first_name">First name</label>
+              <input type="text" id="first_name" name="first_name" title="User first given name" required>
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last name</label>
+              <input type="text" id="last_name" name="last_name" title="User last given name" required>
+            </div>
+          </fieldset>
+          <!-----------============== Address Information ================------------>
           <fieldset>
             <legend>Address</legend>
             <div class="form-group">
@@ -87,28 +92,23 @@
               <input type="text" id="zip_code" name="zip_code" pattern="\d{5}(-\d{4})?" autocomplete="" required>
             </div>
           </fieldset>
+          <!-----------============== Payment Info ================------------>
           <fieldset>
             <legend>Payment</legend>
             <div class="form-group">
               <label for="card_number">Card Number</label>
-              <input type="text" id="card_number" 
-              name="card_number" inputmode="numeric" 
-              title="Payment Card Number" required>
+              <input type="text" id="card_number" name="card_number" inputmode="numeric" title="Payment Card Number" required>
             </div>
             <div class="form-group">
               <label for="exp_date">Expiration Date</label>
-              <input type="month" name="exp_date"
-              id="exp_date" title="Card expiration date"
-              min="2024-07"  required>
+              <input type="month" name="exp_date" id="exp_date" title="Card expiration date" min="2024-07" required>
             </div>
             <div class="form-group">
               <label for="cvv">Security Code</label>
-              <input type="text" id="cvv" 
-                name="cvv" inputmode="numeric"
-                title="" placeholder="CVV"
-                maxlength="4" required>
+              <input type="text" id="cvv" name="cvv" inputmode="numeric" title="" placeholder="CVV" maxlength="4" required>
             </div>
           </fieldset>
+          <!-----------============== Submit Button ================------------>
           <div class="form-btn">
             <button type="submit">Place Order</button>
           </div>
