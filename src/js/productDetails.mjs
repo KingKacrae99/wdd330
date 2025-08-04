@@ -1,4 +1,5 @@
-import { setLocalStorage, getLocalStorage, toTwoDecimal} from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, toTwoDecimal, alertMessage } from "./utils.mjs";
+
 
 
 // onstuctor of an instance
@@ -39,6 +40,8 @@ export default class ProductDetails {
   }
 
   setLocalStorage("so-cart", cartItems);
+  alertMessage("🛒 Product added to cart!", false);
+  
 }
     renderProductDetails() {
        productDetailsTemplate(this.product);

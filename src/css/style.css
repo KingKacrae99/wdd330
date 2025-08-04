@@ -479,6 +479,15 @@ input:focus {
   padding-top: 0.75rem;
   margin-top: 1rem;
 }
+.custom-alert {
+  background-color: #ffc107;
+  color: #333;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  font-weight: 500;
+}
 
 @media screen and (min-width: 500px) {
   body {

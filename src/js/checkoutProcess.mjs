@@ -62,6 +62,12 @@ export default class CheckoutProcess {
     };
 
     const service = new ExternalServices();
-    return await service.checkout(order);
+
+    try {
+      const response = await service.checkout(order);
+      return response; 
+    } catch (err) {
+      throw new Error(err.message);
+    }
   }
 }
