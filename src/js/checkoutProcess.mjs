@@ -61,11 +61,14 @@ export default class CheckoutProcess {
       shipping: this.shipping,
       tax: this.tax.toFixed(2)
     };
+
+    const service = new ExternalServices();
+
     try {
-      const service = new ExternalServices();
-      return await service.checkout(order); 
+      const response = await service.checkout(order);
+      return response; 
     } catch (err) {
-      console.log(err)
+      throw new Error(err.message);
     }
   }
 }

@@ -54,3 +54,31 @@ export function notifier(cartItem) {
 export function toTwoDecimal(num) {
   return num.toFixed(2);
 }
+
+export function alertMessage(message, scroll = true) {
+ 
+  const existing = document.querySelector(".custom-alert");
+  if (existing) existing.remove();
+
+  
+  const alert = document.createElement("div");
+  alert.classList.add("custom-alert");
+  alert.textContent = message;
+
+ 
+  alert.style.backgroundColor = "#4bcc56ff";
+  alert.style.color = "#333";
+  alert.style.padding = "12px";
+  alert.style.marginBottom = "16px";
+  alert.style.marginTop = "16px";
+  alert.style.borderRadius = "6px";
+  alert.style.boxShadow = "0 2px 5px rgba(0,0,0,0.15)";
+  alert.style.fontWeight = "500";
+
+  const main = document.querySelector("main");
+  if (main) {
+    main.prepend(alert);
+    if (scroll) window.scrollTo(0, 0);
+    setTimeout(() => alert.remove(), 5000);
+  }
+}
