@@ -49,7 +49,7 @@ export default class CheckoutProcess {
   }
 
   async checkout(form) {
-    form = document.forms["checkout-form"]
+    const form = document.forms["checkout-form"]
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
