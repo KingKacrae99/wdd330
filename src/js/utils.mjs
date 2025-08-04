@@ -79,6 +79,6 @@ export function alertMessage(message, scroll = true) {
   if (main) {
     main.prepend(alert);
     if (scroll) window.scrollTo(0, 0);
-    setTimeout(() => alert.remove(), 3000);
+    setTimeout(() => alert.remove(), 5000);
   }
 }
