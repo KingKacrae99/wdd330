@@ -18,6 +18,36 @@ export default class ProductList {
 
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
+    const sortOption = document.getElementById("sort")
+    sortOption.addEventListener('change', () => {
+      const selectedValue = sortOption.value;
+      switch (selectedValue) {
+        case "a-z":
+          list.sort((a,z) => {
+            return a.Name.localeCompare(z.Name); 
+          })
+          break;
+        case "z-a":
+          list.sort((a,z) => {
+            return z.Name.localeCompare(a.Name); 
+          })
+          break;
+        case "price-asc":
+          list.sort((a,z) => {
+            return a.FinalPrice - z.FinalPrice; 
+          })
+          break;
+        case "price-desc":
+          list.sort((a,z) => {
+            return z.FinalPrice - a.FinalPrice; 
+          })
+          break;
+      
+        default:
+          break;
+      }
+      renderListWithTemplate(productCardTemplate, this.listElement, list);
+    })
   }
 }
 function productCardTemplate(product) {
