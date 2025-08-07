@@ -59,6 +59,51 @@ p {
   text-decoration: none;
   color: var(--font-body);
 }
+.search-form {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  margin-top: 1rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.search-form input[type="text"] {
+  flex: 1;
+
+  border: 1px solid var(--dark-grey);
+  border-right: none;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-form button {
+  background-color: var(
+    --primary-color,
+    #4a5a00
+  ); /* usa tu variable o color directo */
+  color: white;
+  border: 1px solid var(--dark-grey);
+  border-left: none;
+  padding: 0 10px;
+  cursor: pointer;
+  border-radius: 0 6px 6px 0;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+.search-form button:hover {
+  background-color: #374200; /* o un tono más oscuro del botón */
+}
 
 .hero {
   position: relative;
@@ -221,13 +266,13 @@ button {
 }
 
 /* Styles for product lists */
-.product-heading{
+.product-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
 }
-#sort{
+#sort {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -429,7 +474,6 @@ form {
 }
 fieldset {
   padding: 2rem;
-  
 }
 
 h2 {
@@ -462,7 +506,6 @@ input:focus {
   border-color: #3498db;
   outline: none;
 }
-
 
 .order-summary {
   background-color: #fff;
@@ -498,7 +541,7 @@ input:focus {
   padding: 12px;
   margin-bottom: 16px;
   border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   font-weight: 500;
 }
 
