@@ -65,6 +65,8 @@ function productCardTemplate(product) {
       <h2 class="card__brand">${product.Brand.Name}</h2>
       <h3 class="card__name">${product.Name}</h3>
       <p class="product-card__price">  $${product.FinalPrice}
+      <div class="heart-icon"> <img src="/images/logos/gray-heart.png" alt="Add to Wishlist" class="wishlist-icon-product"></div>
+
         ${isOnSale ? `<span class="original-price">$${product.SuggestedRetailPrice}</span>` : ""}
       </p>
       ${

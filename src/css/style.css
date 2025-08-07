@@ -100,7 +100,16 @@ p {
   margin: 0;
   margin-bottom: 16px;
 }
+.wishlist-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-right: 10px;
+}
 
+.wishlist-icon:hover {
+  transform: scale(1.1);
+}
 .search-form button:hover {
   background-color: #374200; /* o un tono más oscuro del botón */
 }
@@ -300,6 +309,24 @@ button {
 
 .card__name {
   font-size: 1em;
+}
+.heart-icon {
+  border: 1px solid red;
+  border-radius: 50%;
+  padding: 0.3em;
+  position: absolute;
+  top: 2em;
+  right: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.wishlist-icon-product {
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
 }
 
 /* End product list card */
