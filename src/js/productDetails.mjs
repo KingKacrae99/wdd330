@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage, toTwoDecimal, alertMessage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, toTwoDecimal, alertMessage, qs } from "./utils.mjs";
 
 
 
@@ -47,28 +47,64 @@ export default class ProductDetails {
        productDetailsTemplate(this.product);
     }
 
-
 }
 
 // generates the product details and set them into Dom
 function productDetailsTemplate(product) {
   let deductedPrice = toTwoDecimal(product.SuggestedRetailPrice - product.FinalPrice);
-    let discount = toTwoDecimal((deductedPrice / product.SuggestedRetailPrice) * 100);
-    console.log(discount)
+  let discount = toTwoDecimal((deductedPrice / product.SuggestedRetailPrice) * 100);
+  console.log(discount)
   document.querySelector("h2").textContent = product.Brand.Name;
   document.querySelector("h3").textContent = product.NameWithoutBrand;
- 
-    const productImage = document.getElementById("productImage");
-    console.log(product.Image)
-  productImage.src = product.Images.PrimaryLarge
-;
-  productImage.alt = product.NameWithoutBrand;
- 
+
+  const productImage = document.getElementById("productImage");
+  const slider = qs(".slider");
+  console.log(product.Image)
+  const extraImgList = product.Images.ExtraImages
+  
+  if (extraImgList) {
+    slider.innerHTML = '';
+
+    slider.innerHTML += `
+      <div class="slide">
+        <img class="divider" id="productImage"
+        src="${product.Images.PrimaryLarge}"
+        alt="${product.NameWithoutBrand}" />
+      </div>`
+
+    extraImgList.forEach(image => {
+      const slide = `<div class="slide">
+      <img src="${image.Src}" alt="${image.Title}" id="productImage">
+      </div>`;
+      slider.innerHTML += slide;
+      console.log(image.Src)
+    });
+
+    initiateCarousel();
+  } else {
+    productImage.src = product.Images.PrimaryLarge
+    productImage.alt = product.NameWithoutBrand;
+  }
+
   document.getElementById("productPrice").textContent = product.FinalPrice;
-    document.getElementById("product-discount-fee").innerHTML = `<strong>Discounted Fee:</strong> $${deductedPrice}`;
+  document.getElementById("product-discount-fee").innerHTML = `<strong>Discounted Fee:</strong> $${deductedPrice}`;
   document.getElementById("product_discount").innerHTML = `<strong>Discount:</strong> ${discount}% Off`;    
   document.getElementById("productColor").textContent = product.Colors[0].ColorName;
   document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
- 
+
   document.getElementById("addToCart").dataset.id = product.Id;
 }
+
+function initiateCarousel() {
+  const slides= document.querySelectorAll(".slide")
+  const slider = qs(".slider")
+  let currentIndex = 0;
+  const allslides = slides.length
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % allslides;
+    console.log(currentIndex * 100)
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`
+  },3000)
+
+}
+

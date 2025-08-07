@@ -82,3 +82,21 @@ export function alertMessage(message, scroll = true) {
     setTimeout(() => alert.remove(), 5000);
   }
 }
+
+// first stores users first vist and show banner
+export function firstTimerAndModal(hasVisited) {
+  if (!hasVisited) {
+    setLocalStorage("hasVisited","true")
+    const modal = qs(".modal");
+    const modalBackdrop = qs(".modal-backdrop")
+    const closeModal = qs("#closeModal");
+    document.addEventListener('DOMContentLoaded', () => {
+      modal.classList.add("show-modal")
+      modalBackdrop.classList.add("show")
+    })
+    closeModal.addEventListener('click', () => {
+      modal.classList.remove("show-modal")
+      modalBackdrop.classList.remove("show")
+    })
+  }
+}

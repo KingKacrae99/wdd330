@@ -114,7 +114,77 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 
-/* End utility classes */
+/*======== End utility classes =======*/
+
+/****************************************************
+*  Carousel Design
+*****************************************************/
+.carousel{
+  overflow: hidden;
+}
+.slider{
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.slide{
+  min-width: 100%;
+}
+
+/****************************************************
+* End Carousel Design
+****************************************************/
+
+/************************************************
+*   Give-away Modal 
+************************************************/
+
+.modal{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 450px;
+  background: linear-gradient(to bottom, #fff, #e0e0e0);
+  top: 50%;
+  position: fixed;
+  transform: translate( -50%,-50%);
+  left: 50%;
+  z-index: 1000;
+  font-size: small;
+  visibility: hidden;
+}
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+  position: fixed;
+  inset: 0;
+  visibility: hidden;
+
+}
+.show-modal, .modal-backdrop.show{
+  visibility: visible;
+}
+.modal ul{
+  padding:0.5rem 2rem 2rem 2rem;
+}
+.modal #closeModal{
+  background: none;
+  border: none;
+  color: #525b0f;
+  cursor: pointer;
+  text-align: right;
+  position: absolute;
+  top: 0.5%;
+  right: 10px;
+  font-size:1.5rem ;
+  padding: 0%;
+
+}
+.giveaway .cta{
+  text-decoration: none;
+  color: #525b0f;
+  font-weight: 500;
+}
 
 /*****Category Page******/
 .category {
@@ -383,6 +453,10 @@ button {
   background-color: #f0f0f0;
   color: #333;
 }
+
+/********************************************
+* Cart Section
+*********************************************/
 .cart-total {
   display: flex;
   flex-direction: column;
