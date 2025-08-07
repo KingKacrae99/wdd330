@@ -16,8 +16,11 @@ export default class ProductList {
     categoryHead.textContent = `Top Products: ${this.category}`
   }
 
+  // renders the list of products to the html 
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
+
+    // sort or filters pproduct by name or price
     const sortOption = document.getElementById("sort")
     sortOption.addEventListener('change', () => {
       const selectedValue = sortOption.value;
